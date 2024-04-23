@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nadabej/dockerosdocker
+    container_name: laravel_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - "./laravel_todo:/var/www/html"
+      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
+    networks:
+      - private
+
+  mysql:  
+    build:
+      context: .
+      dockerfile: mysql_data/Dockerfile
+    image: nadabej/dockerosdocker
+    container_name: laravel_mysql
+    tty: true
+    restart: always
+    networks:
+      - private
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  php:
+    build:
+      context: .
+      dockerfile: laravel_todo/Dockerfile
+    image: nadabej/dockerosdocker
+    volumes:
+      - "./laravel_todo:/var/www/html"
+    networks:
+      - private
+
+  angular:
+    image: nadabej/dockerosdocker  # Utilisez la clé image pour spécifier l'image préconstruite
+    container_name: angular_app
+    volumes:
+      - "./angular_app:/app"
+    working_dir: /app
+    command: npm start
+    ports:
+      - "4222:4200"
+    networks:
+      - private        
+
+# Docker Networks
+networks:
+    private:
+        driver: bridge
+

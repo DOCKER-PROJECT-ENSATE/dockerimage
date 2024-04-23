@@ -1,0 +1,120 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(/css/image/backG.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: calc(100% - 250px);
+    background-position-y: calc(100% - 50vh);
+    background-size: 500px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;  
+    padding: 0 20px;
+    /* background-color: #f4f4f45d; */
+}
+
+h2 {
+    margin-top: 0;
+}
+h3{ /*as a logo*/
+    color: rgb(206, 113, 26);
+    font-family: cursive;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+button:not(.optionBtn)
+{
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+fieldset{
+    border-radius: 10px;
+}
+
+legend{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    text-align: center;
+}
+/* Form overlay */
+.form-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+}
+
+/* Autres styles peuvent être ajoutés ici */
+th{
+    text-align: left;
+}
+#tableau{
+    margin: 10px 0;
+    padding: 20px;
+}
+
+.data{
+    padding: 20px;
+}
+#data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.1em;
+}
+#data input{
+    color: black;
+    font-weight: bold;
+}
+
+img[alt="logo"]{
+    width: 30px;
+    height: 30px;
+}
+
+.optionIcon{
+    width: 28px;
+    min-height: 28px;
+}
+
+.optionBtn{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 5px 5px;
+}
+.optionBtn:hover{
+    background-color: rgba(232, 188, 137, 0.637);
+}
