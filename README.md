@@ -8,7 +8,7 @@
     - angular app: **127.0.0.1:8080/browser/**
 
 ## **Where to write each app**
--for angular app: In the directory **./angular/newApp**
--for php app: In the directory **./laravel_todo**
-### ***If you want to re-build all container:**
+- for angular app: In the directory **./angular/newApp**
+- for php app: In the directory **./laravel_todo**
+### **If you want to re-build all container:**
 - In order to rebuild the container, run this command : **docker compose build**
