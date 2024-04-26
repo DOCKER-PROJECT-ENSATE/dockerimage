@@ -1,0 +1,63 @@
+version: "3.9"
+
+# C'est ici qu'on va faire le build (CI github) et aussi pour lancer le server en prod
+#pour faire un "build": docker compose -f docker-compose-prod.yml build --push
+#pour faire un "Up" : docker compose -f docker-compose-prod.yml up -d
+
+services:
+  mysql:  
+    build:
+        context: .
+        dockerfile: mysql_data/Dockerfile
+    image: faly3008/mysql_srvphp:latest
+    container_name: laravel_mysql
+    tty: true
+    volumes:
+      - mysql_db:/var/lib/mysql_data
+    restart: always
+    networks:
+      - private
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  php:
+    build:
+        context: .
+        dockerfile: laravel_todo/Dockerfile
+    image: faly3008/php_srvphp:latest
+    container_name: php_srv
+    volumes:
+      - php_app:/var/www/html
+    networks:
+      - private
+
+  nginx:
+    build:
+        context: .
+        dockerfile: angular/newApp/Dockerfile
+    image: faly3008/srvphp:latest
+    container_name: angular_nginx
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - php_app:/var/www/html
+    networks:
+      - private
+    healthcheck: # for testing if mysql has successfully initBD before running this service
+      test: ["CMD", "ping", "-h", "laravel_mysql"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  mysql_db:
+    name: compte-banque-bd
+  php_app:
+    name: php_app_dir
+
+# Docker Networks
+networks:
+    private:
+        driver: bridge
