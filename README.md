@@ -4,7 +4,7 @@
 - clone this branch in order to have a copy in your local machine
 - In your local machine, open a terminal inside the root derectory and run this command : **docker compose -f docker-compose-prod.yml up -d** to run all containers
 - To see what the app has rendered, type one of these urls:
-    - php app: **127.0.0.1:8080/menu.php (ex)**
+    - php app: **127.0.0.1:8080/menu.php (example)**
     - angular app: **127.0.0.1:8080/browser/**
 
 ## **Where to write each app**
