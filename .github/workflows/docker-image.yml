@@ -14,7 +14,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Build the Angular Docker image
-      run: docker build ./angular_app --file ./angular_app/Dockerfile --tag my-angular-image-name:$(date +%s)
+      run: docker build ./angular --file ./angular/Dockerfile --tag my-angular-image-name:$(date +%s)
 
   build-laravel:
     runs-on: ubuntu-latest
