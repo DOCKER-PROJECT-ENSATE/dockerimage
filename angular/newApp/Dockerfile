@@ -2,10 +2,10 @@ FROM node:lts-alpine AS builder
 
 WORKDIR /app
 
-COPY ./angular/newApp/package.json ./
+COPY ./angular/package.json ./
 RUN npm install
 
-COPY ./angular/newApp .
+COPY ./angular .
 RUN npm run build
 
 FROM nginx:latest
