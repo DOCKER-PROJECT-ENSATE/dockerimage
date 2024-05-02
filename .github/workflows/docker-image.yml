@@ -2,17 +2,38 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "env_dev_v0" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "env_dev_v0" ]
+    branches: [ "main" ]
 
 jobs:
 
-  build:
+  build-angular:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Build the Angular Docker image
+      run: docker build ./angular/newApp --file ./angular/newApp/Dockerfile --tag my-angular-image-name:$(date +%s)
+
+  build-laravel:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Build the Laravel Docker image
+      run: docker build ./laravel_todo --file ./laravel_todo/Dockerfile --tag my-laravel-image-name:$(date +%s)
+
+  build-mysql:
+
+        runs-on: ubuntu-latest
+    
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        - name: Build the mysql Docker image
+          run: docker build ./mysql_data --file ./mysql_data/Dockerfile --tag my-mysql-image-name:$(date +%s)
