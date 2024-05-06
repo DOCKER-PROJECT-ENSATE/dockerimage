@@ -16,7 +16,8 @@ services:
       - mysql_db:/var/lib/mysql_data
     restart: always
     networks:
-      - private
+      private:
+        ipv4_address: 192.168.137.213 # Adresse IP fixe pour le service MySQL
     environment:
       MYSQL_ROOT_PASSWORD: root
 
@@ -29,7 +30,7 @@ services:
     volumes:
       - php_app:/var/www/html
     networks:
-      - private
+      private: {}
 
   nginx:
     build:
@@ -44,11 +45,13 @@ services:
     volumes:
       - php_app:/var/www/html
     networks:
-      - private
+      private: {}
+    environment:
+      MYSQL_HOST: 192.168.1.213  # Adresse IP du service MySQL
     healthcheck: # for testing if mysql has successfully initBD before running this service
       test: ["CMD", "ping", "-h", "laravel_mysql"]
-      interval: 10s
-      timeout: 3s
+      interval: 2s
+      timeout: 2s
       retries: 3
 
 volumes:
@@ -61,3 +64,7 @@ volumes:
 networks:
     private:
         driver: bridge
+        ipam:
+          config:
+            - subnet: 192.168.137.0/24
+        

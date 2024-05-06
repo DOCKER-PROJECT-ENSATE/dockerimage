@@ -36,8 +36,8 @@ services:
       - private
     healthcheck: # for testing if mysql has successfully initBD before running this service
       test: ["CMD", "ping", "-h", "laravel_mysql"]
-      interval: 15s
-      timeout: 3s
+      interval: 2s
+      timeout: 2s
       retries: 3
 
 volumes:
