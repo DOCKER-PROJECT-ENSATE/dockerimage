@@ -9,5 +9,5 @@ solde float not null
 );
 
 insert into client values
-(1, "Heriniavo", "Faly", 12000),
-(2, "Haingotiana", "Francia", 10000);
+("Heriniavo", "Faly", 12000),
+("Haingotiana", "Francia", 10000);
