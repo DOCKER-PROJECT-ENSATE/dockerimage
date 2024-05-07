@@ -8,6 +8,6 @@ prenom varchar(50) not null,
 solde float not null
 );
 
-insert into client values
+insert into client(nom,prenom,solde) values
 ("Heriniavo", "Faly", 12000),
 ("Haingotiana", "Francia", 10000);
