@@ -57,18 +57,18 @@ try {
 </head>
 <body>
 <div class="container">
-    <h1>Ce header marque qu'on a pu faire la CI et qu'on peut désormais exécuter les services en utilisant simplement le compose</h1>
+    <!-- <h1>Ce header marque qu'on a pu faire la CI et qu'on peut désormais exécuter les services en utilisant simplement le compose</h1> -->
     <h3>HCPBank<img src="css/image/bankLogo.png" alt="logo"></h3>
     <fieldset class="NewClient" style="width: fit-content;">
         <legend>Ajouter un nouvel utilisateur</legend>
-        <form id="formUtilisateur">
+        <form method="post" action="" id="formUtilisateur">
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" required><br><br>
             <label for="prenom">Prénom :</label>
             <input type="text" id="prenom" name="prenom" required><br><br>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <button type="submit">Ajouter utilisateur</button>
+            <label for="solde">Solde Initiale :</label>
+            <input type="number" id="solde" name="solde" required><br><br>
+            <button type="submit" name="ajouter">Ajouter utilisateur</button>
         </form> 
     </fieldset>
     
@@ -128,6 +128,17 @@ try {
                     $stmt->execute();
                     echo json_encode(['message' => 'Update successful']);
                     exit;
+                }
+
+                if(isset($_POST['ajouter'])){
+                    $stmtAJout = $conn->prepare("insert into client(nom,prenom,solde) values (?, ?, ?)");
+                    $stmtAJout->bindParam(1, $_POST['nom']);
+                    $stmtAJout->bindParam(2, $_POST['prenom']);
+                    $stmtAJout->bindParam(3, $_POST['solde']);
+                    if($stmtAJout->execute())
+                        echo json_encode(['message' => 'Ajout avec succès']);
+                    else
+                        echo json_encode(['message' => 'Echec d\'Ajout']);
                 }
                 ?>
                 
