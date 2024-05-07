@@ -57,7 +57,7 @@ try {
 </head>
 <body>
 <div class="container">
-    <!-- <h1>Ce header marque qu'on a pu faire la CI et qu'on peut désormais exécuter les services en utilisant simplement le compose</h1> -->
+    <h1>Ce header marque qu'on a pu faire la CI et qu'on peut désormais exécuter les services en utilisant simplement le compose</h1>
     <h3>HCPBank<img src="css/image/bankLogo.png" alt="logo"></h3>
     <fieldset class="NewClient" style="width: fit-content;">
         <legend>Ajouter un nouvel utilisateur</legend>
