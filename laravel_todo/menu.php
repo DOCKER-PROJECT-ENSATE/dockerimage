@@ -17,6 +17,7 @@ try {
         header("Location: ".$_SERVER['PHP_SELF']);
         exit();
     }
+    //juste pour tester
 
     // Vérification des données du formulaire de retrait
     if(isset($_POST['montantR'], $_POST['idcliR'])) {
