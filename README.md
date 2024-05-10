@@ -12,3 +12,5 @@
 - for php app: In the directory **./laravel_todo**
 ### **If you want to re-build all container:**
 - In order to rebuild the container, run this command : **docker compose build**
+
+.
