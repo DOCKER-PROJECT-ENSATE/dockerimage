@@ -44,7 +44,16 @@ try {
         }
     }
 
-    
+    if(isset($_POST['ajouter'])){
+        $stmtAJout = $BDD->prepare("insert into client(nom,prenom,solde) values (?, ?, ?)");
+        $stmtAJout->bindParam(1, $_POST['nom']);
+        $stmtAJout->bindParam(2, $_POST['prenom']);
+        $stmtAJout->bindParam(3, $_POST['solde']);
+        $stmtAJout->execute();
+
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,16 +137,7 @@ try {
                     $stmt->execute();
                     echo json_encode(['message' => 'Update successful']);
                     exit;
-                }
-
-                if(isset($_POST['ajouter'])){
-                    $stmtAJout = $conn->prepare("insert into client(nom,prenom,solde) values (?, ?, ?)");
-                    $stmtAJout->bindParam(1, $_POST['nom']);
-                    $stmtAJout->bindParam(2, $_POST['prenom']);
-                    $stmtAJout->bindParam(3, $_POST['solde']);
-                    if(!$stmtAJout->execute())
-                        echo json_encode(['message' => 'Echec d\'Ajout']);
-                }
+                }           
                 ?>
                 
             </tbody>

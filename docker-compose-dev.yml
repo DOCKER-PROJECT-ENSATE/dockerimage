@@ -24,8 +24,8 @@ services:
       - private
 
   nginx:
-    image: faly3008/srvphp:latest
-    container_name: nginx
+    image: faly3008/srv_angular_php:latest
+    container_name: angular_nginx
     depends_on:
       - mysql
     ports:
