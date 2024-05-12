@@ -14,6 +14,7 @@ services:
     tty: true
     volumes:
       - mysql_db:/var/lib/mysql
+      - ./exportClientBanque.sh:/home/exportClientBanque.sh
     restart: always
     networks:
       - private
